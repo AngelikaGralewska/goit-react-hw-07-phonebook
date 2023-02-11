@@ -9,7 +9,6 @@ import { FilterContact } from './Filter/Filter';
 
 import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
 import { fetchContacts } from 'redux/api';
-//import { setFilter } from 'redux/filtersSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
