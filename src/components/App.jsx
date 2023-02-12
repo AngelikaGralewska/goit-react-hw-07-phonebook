@@ -1,4 +1,4 @@
-import { useSelector , useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 
 import style from './App.module.css';
@@ -7,14 +7,14 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { FilterContact } from './Filter/Filter';
 
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+//import { selectContacts} from 'redux/selectors';
 import { fetchContacts } from 'redux/api';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  //const contacts = useSelector(selectContacts);
+  //const isLoading = useSelector(selectIsLoading);
+  //const error = useSelector(selectError);
 
 //  const handleSubmit = event => {
  //  event.preventDefault();
@@ -43,7 +43,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  console.log(contacts.items)
+  ///console.log(contacts.items)
     return (
       <div className= {style.mainDiv} >
         <h1 className={style.title}>Phonebook</h1>
@@ -51,9 +51,6 @@ export const App = () => {
         //onSubmit={handleSubmit}
         />
         <h2 className={style.title}>Contacts</h2>
-        {isLoading && !error && <p>Loading.....</p>}
-        {contacts.items.length > 0 ? (
-        <>
         <FilterContact 
         //filter={filter} 
         //handleChange={handleChange} 
@@ -61,12 +58,6 @@ export const App = () => {
         <ContactsList 
         //contacts={getFilteredContacts()} onDeleteContact={deleteContactItem}
         />
-        </>
-        ) : (
-          <div>
-              Your phone book is empty at the moment
-          </div>
-        )}
       </div> 
     );
 };

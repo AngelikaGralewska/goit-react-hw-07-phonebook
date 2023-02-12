@@ -6,16 +6,21 @@ import style from './ContactsList.module.css';
 
 
 
-const getFilteredContacts = (filter, contacts) => {
-  const filteredContact = filter.toLowerCase().trim();
-  return contacts.items.filter(contact => contact.name.toLowerCase().includes(filteredContact));
-};
+//const getFilteredContacts = (filter, contacts) => {
+ // const filteredContact = filter.toLowerCase().trim();
+ // return contacts.items.filter(contact => contact.name.toLowerCase().includes(filteredContact));
+///};
 
 export const ContactsList = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectStatusFilter);
+
+  const getFilteredContacts = (filter, contacts) => {
+    const filteredContact = filter.toLowerCase().trim();
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filteredContact));
+  };
 
   const filteredContacts = getFilteredContacts(filter, contacts);
 
@@ -47,7 +52,7 @@ return(
           PropTypes.shape({
               id: PropTypes.string.isRequired,
               name: PropTypes.string.isRequired,
-              number: PropTypes.string.isRequired,
+              phone: PropTypes.string.isRequired,
           })
     ),
     //onDeleteContact: PropTypes.func.isRequired,

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import style from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filtersSlice';
@@ -21,7 +21,7 @@ import { setFilter } from 'redux/filtersSlice';
     );
  };
   
-  FilterContact.propTypes = {
-    filter: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired,
-  };
+  //FilterContact.propTypes = {
+  //  filter: PropTypes.string.isRequired,
+   // handleChange: PropTypes.func.isRequired,
+  //};
