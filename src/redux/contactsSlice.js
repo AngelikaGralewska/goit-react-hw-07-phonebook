@@ -15,7 +15,7 @@ const rejected = (state, action) => {
 };
 
 export const contactsSlice = createSlice({
-  name: 'contacts',
+  name: 'contact',
   initialState,
   reduser: {},
   extraReducers: {

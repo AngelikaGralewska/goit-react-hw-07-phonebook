@@ -1,30 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/api';
-import { selectContacts, selectStatusFilter } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import PropTypes from 'prop-types';
 import style from './ContactsList.module.css';
 
-
-
-//const getFilteredContacts = (filter, contacts) => {
- // const filteredContact = filter.toLowerCase().trim();
- // return contacts.items.filter(contact => contact.name.toLowerCase().includes(filteredContact));
-///};
+const getFilteredContacts = (filter, contact) => {
+  const filteredContact = filter.toLowerCase().trim();
+  return contact.items.filter(item => item.name.toLowerCase().includes(filteredContact));
+};
 
 export const ContactsList = () => {
 
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectStatusFilter);
+  const contact = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
-  const getFilteredContacts = (filter, contacts) => {
-    const filteredContact = filter.toLowerCase().trim();
-    return contacts.filter(contact => contact.name.toLowerCase().includes(filteredContact));
-  };
-
-  const filteredContacts = getFilteredContacts(filter, contacts);
-
-  const handleDelete = (id) => dispatch(deleteContact(id));
+  const filteredContacts = getFilteredContacts(filter, contact);
 
 return(
   <ul className={style.contactsList}>
@@ -37,7 +28,7 @@ return(
       <button
         className={style.buttonDelete}
         type="submit"
-        onClick={handleDelete}
+        onClick={() => dispatch(deleteContact(id))}
       >
         delete
       </button>
@@ -55,5 +46,4 @@ return(
               phone: PropTypes.string.isRequired,
           })
     ),
-    //onDeleteContact: PropTypes.func.isRequired,
   };
